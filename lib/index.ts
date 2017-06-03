@@ -16,7 +16,7 @@ export interface IPluginConfig {
 
 const log = new Log('waterline');
 
-export function DRegisterModel(requiredParams: any): any {
+export function DModel(requiredParams: any): any {
   return function(OriginalClassConstructor: IModelConstructor) {
     class NewModel extends OriginalClassConstructor {
       constructor() {

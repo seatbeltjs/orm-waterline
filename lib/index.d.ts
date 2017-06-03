@@ -5,6 +5,6 @@ export interface IPluginConfig {
     adapters: any;
     connections: any;
 }
-export declare function DRegisterModel(requiredParams: any): any;
+export declare function DModel(requiredParams: any): any;
 export declare function DModels(): any;
 export declare function waterlinePlugin(config: IPluginConfig): any;

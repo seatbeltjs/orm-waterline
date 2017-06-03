@@ -1,7 +1,9 @@
+import { Log } from '@seatbelt/core';
+
 const Waterline = require('waterline');
 const database = new Waterline();
-var db: any;
 const modelRegister: any = {};
+let db: any;
 
 export declare type IModelConstructor = new () => {
   name: string;
@@ -12,9 +14,11 @@ export interface IPluginConfig {
   connections: any;
 }
 
+const log = new Log('waterline');
+
 export function DRegisterModel(requiredParams: any): any {
   return function(OriginalClassConstructor: IModelConstructor) {
-    const NewModel: any = class extends OriginalClassConstructor{
+    class NewModel extends OriginalClassConstructor {
       constructor() {
         super();
         const collection = Waterline.Collection.extend(requiredParams);
@@ -35,16 +39,15 @@ export function waterlinePlugin(config: IPluginConfig): any {
   return {
     routes: (routes: any[]) => {
       database.initialize(config, (err: Error, DB: any) => {
-        if (err) { console.log('<error>', err) }
+        if (err) {
+          log.error('<error>', err);
+        }
         db = DB.collections;
-        console.log('db initialized');
+        log.system('db initialized');
         routes.forEach(route => {
           route.models = db;
-          console.log(db, route);
         });
       });
-    },
-    server: function (server: any) {
     }
-  }
+  };
 }

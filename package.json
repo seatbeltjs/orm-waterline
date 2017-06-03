@@ -1,6 +1,6 @@
 {
   "name": "@seatbelt/orm-waterline",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "description": "Seatbelt Orm Plugin Waterline",
   "main": "lib/index.js",
   "types": "lib/index.ts",
@@ -20,9 +20,10 @@
     "tslint-microsoft-contrib": "^4.0.1",
     "typescript": "^2.3.2"
   },
-  "author": "Thomas Meadows",
-  "license": "MIT",
   "dependencies": {
+    "@seatbelt/core": "^0.0.1-alpha.1",
     "waterline": "^0.11.11"
-  }
+  },
+  "author": "Thomas Meadows",
+  "license": "MIT"
 }
